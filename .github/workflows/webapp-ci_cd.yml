@@ -1,0 +1,7 @@
+name: webapp-ciIcd
+
+on: push
+
+jobs:
+  
+  
