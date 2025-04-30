@@ -26,4 +26,12 @@ tests:
     - name: Checks The Code
       uses: actions/checkout@v4
 
+    - name: Node.js Setup
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18.19.1'
+
+    - name:
+      working-directory: 
+
       
