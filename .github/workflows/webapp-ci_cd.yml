@@ -5,7 +5,7 @@ on:
 
 jobs:
   lint:
-    runs-on: ubuntu:latest
+    runs-on: ubuntu-latest
     name: Super Linter
 
     steps:
@@ -19,7 +19,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   tests:
-    runs-on: ubuntu:latest
+    runs-on: ubuntu-latest
     name: Run and Test front and back ends
 
     steps:
@@ -46,6 +46,15 @@ jobs:
       - name: BackEnd test
         working-directory: ./node-express-realworld-example-app
         run: npm test
+
+      - name: Build FrontEnd
+        working-directory: ./angular-realworld-example-app
+        run: npm run build
+
+      - name: Build BackEnd
+        working-directory: ./node-express-realworld-example-app
+        run: npm run build
+
 
   build-and-deploy:
     runs-on: ubuntu-latest
