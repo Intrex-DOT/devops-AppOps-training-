@@ -1,1 +1,0 @@
-// Placeholder file to satisfy TypeScript compiler requirements and comment to satisfy superlinter
