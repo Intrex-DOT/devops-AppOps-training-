@@ -24,7 +24,7 @@ jobs:
       - name: Run Super Linter
         uses: super-linter/super-linter@v6
         env:
-          VALIDATE_ALL_CODEBASE: false
+          VALIDATE_ALL_CODEBASE: false      # Purpose of this is to unchoke the super linter
           VALIDATE_YAML: true
           VALIDATE_MD: true
           VALIDATE_BASH: true
@@ -38,7 +38,7 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     name: Run and Test front and back ends
-                                                          # npm will never be used again, and will be switched with Jest from now on with later projects.
+
     steps:
       - name: Checks The Code
         uses: actions/checkout@v4
@@ -48,25 +48,26 @@ jobs:
 
       - name: Install FrontEnd dependencies
         working-directory: ./angular-realworld-example-app
-        run: HUSKY=0 npm install
+        run: npm install
 
       - name: FrontEnd test
         working-directory: ./angular-realworld-example-app
-        run: npm test
+        run: npx jest --ci --coverage --runInBand
+
 
       - name: Install BackEnd dependencies
         working-directory: ./node-express-realworld-example-app
-        run: HUSKY=0 npm install
+        run: npm install
 
       - name: BackEnd test
         working-directory: ./node-express-realworld-example-app
-        run: npm test
+        run: npx jest --ci --coverage --runInBand
 
       - name: Build FrontEnd
         working-directory: ./angular-realworld-example-app
         run: npm run build
 
-      - name: Build BackEnd                                       # this is meaningless UNLESS the webapp code is in typescript, which this is
+      - name: Build BackEnd                                       
         working-directory: ./node-express-realworld-example-app
         run: npm run build
 
@@ -74,7 +75,7 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
     needs: [lint, tests]
-    name: Build & deploy Docker Containers
+    name: Build & push Docker Containers
 
     steps:
       - name: Check code
@@ -103,12 +104,3 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/webapp:${{ github.sha }}
-
-#      - name: Deploy to AWS ECS (Commented out for resource saving and Dev Code failure)
-#        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-#        with:
-#         task-definition: ecs-task-def.json
-#         service: WebappTest-service
-#         cluster: WebappTest-cluster
-#         wait-for-service-stability: true
- 
