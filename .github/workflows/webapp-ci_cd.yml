@@ -48,7 +48,7 @@ jobs:
 
       - name: Install FrontEnd dependencies
         working-directory: ./angular-realworld-example-app
-        run: npm install
+        run: HUSKY=0 npm install
 
       - name: FrontEnd test
         working-directory: ./angular-realworld-example-app
@@ -57,7 +57,7 @@ jobs:
 
       - name: Install BackEnd dependencies
         working-directory: ./node-express-realworld-example-app
-        run: npm install
+        run: HUSKY=0 npm install
 
       - name: BackEnd test
         working-directory: ./node-express-realworld-example-app
