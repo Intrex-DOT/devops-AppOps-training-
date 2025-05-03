@@ -2,7 +2,8 @@
 
 This repository is a DevOps training project where I integrated CI/CD and containerization into an existing full-stack application.
 
-However due to the reason i have found, its very likely that the error was caused by the outdated webapp code. using npm instead of Jest. 
+However due to the reason i have found, its very likely that the error was caused by the outdated webapp code, using npm instead of Jest.
+
 However the next projects will be using Jest from now on.
 
 Project Overview
