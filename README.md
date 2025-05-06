@@ -1,3 +1,5 @@
+⚠️ Note: This project uses an open-source codebase from Thinkster’s RealWorld app. Some frontend tests and dependencies appear outdated or broken and could not be fixed without altering the original code structure. CI/CD pipeline still demonstrates a functional AppOps setup. In case it is a CI/CD pipeline issue, then i apologize for my lackluster skills, and i apologize to the Thinkster's Realworld team for speaking negatively on their webapp. 
+
 # DevOps Practice – CI/CD & Docker Integration
 
 This repository is a DevOps training project where I integrated CI/CD and containerization into an existing full-stack application.
